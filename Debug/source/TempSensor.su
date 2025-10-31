@@ -1,0 +1,7 @@
+../source/TempSensor.c:8:6:Temp_SetupAll	8	static
+../source/TempSensor.c:13:6:Temp_Write	24	static
+../source/TempSensor.c:17:6:Temp_Read	24	static
+../source/TempSensor.c:21:6:Temp_Shutdown	16	static
+../source/TempSensor.c:25:6:Temp_SetConfigurationReg	24	static
+../source/TempSensor.c:30:6:Temp_TriggerTempConv	8	static
+../source/TempSensor.c:39:7:Temp_ReadTemperature	24	static
