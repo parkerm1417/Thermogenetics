@@ -1,4 +1,0 @@
-../source/I2C_Master.c:6:6:I2C_GetDefaultSettings	24	static
-../source/I2C_Master.c:21:6:I2C_SetupAll	8	static
-../source/I2C_Master.c:25:6:I2C_Write	64	dynamic
-../source/I2C_Master.c:49:6:I2C_Read	24	static

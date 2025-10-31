@@ -1,4 +1,0 @@
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_gpio.h:188:20:GPIO_PortSet	16	static
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_gpio.h:208:20:GPIO_PortClear	16	static
-../source/Well.c:6:6:Well_Heat	16	static
-../source/Well.c:10:6:Well_Cool	16	static

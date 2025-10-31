@@ -1,2 +1,0 @@
-../CMSIS/system_MKL02Z4.c:111:6:SystemInit	8	static
-../CMSIS/system_MKL02Z4.c:125:6:SystemCoreClockUpdate	16	static
