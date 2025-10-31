@@ -1,0 +1,2 @@
+C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_clock.h:521:20:CLOCK_SetLpsci0Clock	16	static
+../board/board.c:44:6:BOARD_InitDebugConsole	16	static
