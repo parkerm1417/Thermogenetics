@@ -1,5 +1,0 @@
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_clock.h:499:20:CLOCK_EnableClock	24	static
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_port.h:262:20:PORT_SetPinConfig	32	static
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_port.h:364:20:PORT_SetPinMux	24	static
-../board/pin_mux.c:40:6:BOARD_InitBootPins	8	static
-../board/pin_mux.c:68:6:BOARD_InitPins	32	static

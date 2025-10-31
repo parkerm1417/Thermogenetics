@@ -1,7 +1,0 @@
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_clock.h:624:20:CLOCK_SetSimSafeDivs	8	static
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_smc.h:286:20:SMC_SetPowerModeProtection	16	static
-C:\Users\12mcp\Documents\MCUXpressoIDE_11.4.1_6260\workspace2\Thermogenetics\drivers/fsl_smc.h:305:33:SMC_GetPowerModeState	16	static
-../board/clock_config.c:68:13:CLOCK_CONFIG_FllStableDelay	16	static
-../board/clock_config.c:80:6:BOARD_InitBootClocks	8	static
-../board/clock_config.c:150:6:BOARD_BootClockRUN	8	static
-../board/clock_config.c:231:6:BOARD_BootClockVLPR	8	static
