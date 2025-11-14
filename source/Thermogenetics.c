@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "board.h"
 #include "peripherals.h"
 #include "pin_mux.h"
@@ -12,6 +13,7 @@
 #include "Power.h"
 #include "fsl_smc.h"
 #include "crc32.h"
+#include "SEGGER_RTT.h"
 
 #define LED_GPIO BOARD_INITPINS_LED_GPIO
 #define LED_PIN BOARD_INITPINS_LED_PIN
@@ -38,8 +40,12 @@ float Temp2 = 0;
 
 int main(void) {
 	BOARD_InitPins();
-	//Flash_Clear();
-	BOARD_BootClockVLPR();
+	Flash_Clear();
+	BOARD_BootClockRUN();
+
+	SEGGER_RTT_Init();
+	SEGGER_RTT_printf(0, "\r\n=== RTT Debug ===\r\n");
+
 	Well_Cool(Wells[0]);
 	Well_Cool(Wells[1]);
 	I2C_SetupAll();
@@ -70,21 +76,24 @@ int main(void) {
 	for(uint32_t i=0; i<1600; i++){
 	}
 	GPIO_PortSet(LED_GPIO, 1 << LED_PIN);
-
+    SEGGER_RTT_printf(0, "W[0] T=%.d  W[1] T=%.d\r\n", (int)Wells[0].TempGoal,(int)Wells[1].TempGoal);
     while(1){
     	if(State == TEMP_CTRL){
     		for(int i=0; i<2; i++){
     			if(Wells[i].Cycles > 0){
 					if(Wells[i].WellState){
 						DisableIRQ(LPTMR_INTERRUPT);
-						//Temp1 = Temp_ReadTemperature(Wells[i].TempAddress);
-						if(Temp_ReadTemperature(Wells[i].TempAddress) > Wells[i].TempGoal){
-							Well_Cool(Wells[i]);
+						Temp1 = Temp_ReadTemperature(Wells[i].TempAddress);
+	                    SEGGER_RTT_printf(0, "%d: %u\n",
+	                                      i, Temp_ReadReg(Wells[i].TempAddress));
+						if(Temp1 > Wells[i].TempGoal){
+							Well_Cool(Wells[i]); // TMP117
 						}
 						else{
 							Well_Heat(Wells[i]);
 						}
 						EnableIRQ(LPTMR_INTERRUPT);
+
 					}
     			}
     		}

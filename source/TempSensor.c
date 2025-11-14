@@ -41,3 +41,9 @@ float Temp_ReadTemperature(uint8_t _SlaveAddress){
 	float TempConv = ((I2C_Master -> ReadBuff[0] << 8) + (I2C_Master -> ReadBuff[1])) * 0.0078125; //Convert digital data to celcius
 	return TempConv;
 }
+
+uint16_t Temp_ReadReg(uint8_t _SlaveAddress){
+	Temp_Read(_SlaveAddress, 0x00, 2);
+	uint16_t regs = ((I2C_Master -> ReadBuff[0] << 8) + (I2C_Master -> ReadBuff[1])); //Convert digital data to celcius
+	return regs;
+}

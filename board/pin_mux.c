@@ -7,11 +7,11 @@
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Pins v10.0
+product: Pins v17.0
 processor: MKL02Z32xxx4
 package_id: MKL02Z32CAF4
 mcu_data: ksdk2_0
-processor_version: 10.0.0
+processor_version: 13.0.1
 pin_labels:
 - {pin_num: C4, pin_signal: EXTAL0/PTA3/I2C0_SCL/I2C1_SDA, label: SCL, identifier: SCL}
 - {pin_num: D4, pin_signal: XTAL0/PTA4/I2C0_SDA/I2C1_SCL, label: SDA, identifier: SDA}
@@ -55,6 +55,8 @@ BOARD_InitPins:
   - {pin_num: A2, peripheral: GPIOB, signal: 'GPIO, 13', pin_signal: ADC0_SE13/PTB13/TPM1_CH1, direction: OUTPUT}
   - {pin_num: B2, peripheral: CMP0, signal: 'IN, 1', pin_signal: ADC0_SE1/CMP0_IN1/PTB5/IRQ_12/TPM1_CH1/NMI_b, pull_enable: disable}
   - {pin_num: A1, peripheral: CMP0, signal: 'IN, 0', pin_signal: ADC0_SE0/CMP0_IN0/PTA12/IRQ_13/LPTMR0_ALT2/TPM1_CH0/TPM_CLKIN0}
+  - {pin_num: A3, peripheral: SWD, signal: SWD_CLK, pin_signal: ADC0_SE12/CMP0_IN2/PTA0/IRQ_0/TPM1_CH0/SWD_CLK}
+  - {pin_num: B3, peripheral: SWD, signal: SWD_DIO, pin_signal: PTA2/CMP0_OUT/SWD_DIO}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
@@ -93,8 +95,14 @@ void BOARD_InitPins(void)
     /* Initialize GPIO functionality on pin PTB13 (pin A2)  */
     GPIO_PinInit(BOARD_INITPINS_GATE2_GPIO, BOARD_INITPINS_GATE2_PIN, &GATE2_config);
 
+    /* PORTA0 (pin A3) is configured as SWD_CLK */
+    PORT_SetPinMux(PORTA, 0U, kPORT_MuxAlt3);
+
     /* PORTA12 (pin A1) is configured as CMP0_IN0 */
     PORT_SetPinMux(BOARD_INITPINS_DOWNLINK1_PORT, BOARD_INITPINS_DOWNLINK1_PIN, kPORT_PinDisabledOrAnalog);
+
+    /* PORTA2 (pin B3) is configured as SWD_DIO */
+    PORT_SetPinMux(PORTA, 2U, kPORT_MuxAlt3);
 
     const port_pin_config_t SCL = {/* Internal pull-up resistor is enabled */
                                    kPORT_PullUp,

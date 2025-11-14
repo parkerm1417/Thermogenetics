@@ -33,11 +33,11 @@
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Clocks v8.0
+product: Clocks v17.0
 processor: MKL02Z32xxx4
 package_id: MKL02Z32CAF4
 mcu_data: ksdk2_0
-processor_version: 10.0.0
+processor_version: 13.0.1
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 
@@ -53,8 +53,6 @@ processor_version: 10.0.0
 /*******************************************************************************
  * Variables
  ******************************************************************************/
-/* System clock frequency. */
-extern uint32_t SystemCoreClock;
 
 /*******************************************************************************
  * Code

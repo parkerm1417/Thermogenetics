@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8" ?>
-<configuration name="MKL02Z32xxx4" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_10 http://mcuxpresso.nxp.com/XSD/mex_configuration_10.xsd" uuid="106fcb91-2974-4f37-a4f6-c5ac560b2ef0" version="10" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<configuration name="MKL02Z32xxx4" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_18 http://mcuxpresso.nxp.com/XSD/mex_configuration_18.xsd" uuid="106fcb91-2974-4f37-a4f6-c5ac560b2ef0" version="18" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_18" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <common>
       <processor>MKL02Z32xxx4</processor>
       <package>MKL02Z32CAF4</package>
@@ -11,18 +11,19 @@
    </common>
    <preferences>
       <validate_boot_init_only>true</validate_boot_init_only>
-      <generate_extended_information>false</generate_extended_information>
       <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
       <update_include_paths>true</update_include_paths>
+      <enable_parallel_routing>true</enable_parallel_routing>
+      <generate_registers_defines>false</generate_registers_defines>
    </preferences>
    <tools>
-      <pins name="Pins" version="10.0" enabled="true" update_project_code="true">
+      <pins name="Pins" version="17.0" enabled="true" update_project_code="true">
          <generated_project_files>
             <file path="board/pin_mux.c" update_enabled="true"/>
             <file path="board/pin_mux.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
-            <processor_version>10.0.0</processor_version>
+            <processor_version>13.0.1</processor_version>
             <pin_labels>
                <pin_label pin_num="C4" pin_signal="EXTAL0/PTA3/I2C0_SCL/I2C1_SDA" label="SCL" identifier="SCL"/>
                <pin_label pin_num="D4" pin_signal="XTAL0/PTA4/I2C0_SDA/I2C1_SCL" label="SDA" identifier="SDA"/>
@@ -50,6 +51,11 @@
                      </feature>
                   </dependency>
                   <dependency resourceType="Peripheral" resourceId="CMP0" description="Peripheral CMP0 is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="Peripheral" resourceId="SWD" description="Peripheral SWD is not initialized" problem_level="1" source="Pins:BOARD_InitPins">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
@@ -105,20 +111,22 @@
                      </pin_features>
                   </pin>
                   <pin peripheral="CMP0" signal="IN, 0" pin_num="A1" pin_signal="ADC0_SE0/CMP0_IN0/PTA12/IRQ_13/LPTMR0_ALT2/TPM1_CH0/TPM_CLKIN0"/>
+                  <pin peripheral="SWD" signal="SWD_CLK" pin_num="A3" pin_signal="ADC0_SE12/CMP0_IN2/PTA0/IRQ_0/TPM1_CH0/SWD_CLK"/>
+                  <pin peripheral="SWD" signal="SWD_DIO" pin_num="B3" pin_signal="PTA2/CMP0_OUT/SWD_DIO"/>
                </pins>
             </function>
          </functions_list>
       </pins>
-      <clocks name="Clocks" version="8.0" enabled="true" update_project_code="true">
+      <clocks name="Clocks" version="17.0" enabled="true" update_project_code="true">
          <generated_project_files>
             <file path="board/clock_config.c" update_enabled="true"/>
             <file path="board/clock_config.h" update_enabled="true"/>
          </generated_project_files>
          <clocks_profile>
-            <processor_version>10.0.0</processor_version>
+            <processor_version>13.0.1</processor_version>
          </clocks_profile>
          <clock_configurations>
-            <clock_configuration name="BOARD_BootClockRUN">
+            <clock_configuration name="BOARD_BootClockRUN" id_prefix="" prefix_user_defined="false">
                <description></description>
                <options/>
                <dependencies>
@@ -157,7 +165,7 @@
                </clock_settings>
                <called_from_default_init>false</called_from_default_init>
             </clock_configuration>
-            <clock_configuration name="BOARD_BootClockVLPR">
+            <clock_configuration name="BOARD_BootClockVLPR" id_prefix="" prefix_user_defined="false">
                <description></description>
                <options/>
                <dependencies>

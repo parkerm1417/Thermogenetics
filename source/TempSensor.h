@@ -29,4 +29,6 @@ void Temp_TriggerTempConv(void); //Trigger a temperature measurement by the temp
 
 float Temp_ReadTemperature(uint8_t _SlaveAddress); //Read the measured temperature from the temp sensor with the MCU
 
+uint16_t Temp_ReadReg(uint8_t _SlaveAddress);
+
 #endif /* HEADER_AND_C_FILES_TEMPSENSOR_H_ */
